@@ -1,0 +1,17 @@
+project:
+  type: website
+  output-dir: docs
+
+manuscript:
+  article: index.qmd
+
+format:
+  html:
+    self-contained: true
+    comments:
+      hypothesis: true
+  docx: default
+  jats: default
+
+execute:
+  freeze: true

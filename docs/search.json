@@ -1,0 +1,9 @@
+[
+  {
+    "objectID": "index.html#salinity-in-miami-dade-county-florida-shows-fluctuations-throughout-the-time-frame-used-with-noticeable-increases-in-certain-periods-of-time.-this-trend-can-be-seen-in-the-following-image-which-shows-how-salinity-levels-have-changed-between-2010-and-2024.",
+    "href": "index.html#salinity-in-miami-dade-county-florida-shows-fluctuations-throughout-the-time-frame-used-with-noticeable-increases-in-certain-periods-of-time.-this-trend-can-be-seen-in-the-following-image-which-shows-how-salinity-levels-have-changed-between-2010-and-2024.",
+    "title": "ESS 330 Final Project",
+    "section": "Salinity in Miami-Dade county, Florida shows fluctuations throughout the time frame used, with noticeable increases in certain periods of time. This trend can be seen in the following image, which shows how salinity levels have changed between 2010 and 2024.",
+    "text": "Salinity in Miami-Dade county, Florida shows fluctuations throughout the time frame used, with noticeable increases in certain periods of time. This trend can be seen in the following image, which shows how salinity levels have changed between 2010 and 2024.\n\nsalinity_data &lt;- read.csv(\"salinity copy.csv\")\n\nsalinity_data &lt;- salinity_data %&gt;%\n  mutate(Activity_StartDate = as.Date(Activity_StartDate)) %&gt;%\n  filter(Activity_StartDate &gt;= as.Date(\"2010-01-01\") & Activity_StartDate &lt;= as.Date(\"2024-12-31\"),\n         Location_CountyName == \"Miami-Dade County\")\n\nggplot(salinity_data, aes(x = Activity_StartDate, y = Result_Measure)) +\n  geom_line(color = \"steelblue\", size = 0.5) +\n  labs(title = \"Salinity in Miami-Dade County (ppth, 2010–2024)\",\n       x = \"Date\",\n       y = \"Salinity (ppth)\") +\n  theme_minimal()"
+  }
+]
