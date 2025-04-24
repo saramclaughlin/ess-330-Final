@@ -18,28 +18,39 @@ bibliography: references.bib
 csl: apa.csl
 ---
 # 1. Title:
-# The Effects of Sea Level Rise on Freshwater Quality Within the State of Florida from 2010 - 2024  
+The Effects of Sea Level Rise on Freshwater Quality Within the State of Florida from 2010 - 2024  
 
 # 2. Introduction:
-# Sea Level rise has had significant impacts on water quality. As the sea level increases, saltwater intrusion can contaminate freshwater aquifers which reduce the availability of clean drinking water [@werner2009]. The intrusion of saltwater also degrades wetlands, which act as a natural water filter and are habitats for diverse aquatic species. The decrease in wetlands diminishes their ability to buffer against storm surges and filter pollutants, further compromising the water quality [@dessu2018]. Also, rising sea levels lead to more frequent and severe coastal flooding which can result in an overflow of sewage systems and carry pollutants into waterways. This increase in contamination can endanger public health and harm aquatic ecosystems. Understanding and addressing the effects of sea level rise on water quality is significant for protecting freshwater resources, preserving ecosystems and ensuring the sustainability of coastal communities. Our hypothesis to address this research project is: If sea level rise has increased from 2010 to 2024 in the state of Florida, then the salinity levels in freshwater sources will also have increased, degrading overall freshwater quality. This will require two data sets: (1) sea level data from NOAA’s Tides and Current database and (2) freshwater quality (specifically, salinity) data from the USGS National Water Information System. From this data, we will construct a spearman correlation test to determine correlation, a linear regression model to determine the strength of the relationship, and a scatter plot to visualize the relationship.
+Sea Level rise has had significant impacts on water quality. As the sea level increases, saltwater intrusion can contaminate freshwater aquifers which reduce the availability of clean drinking water [@werner2009]. The intrusion of saltwater also degrades wetlands, which act as a natural water filter and are habitats for diverse aquatic species. The decrease in wetlands diminishes their ability to buffer against storm surges and filter pollutants, further compromising the water quality [@dessu2018]. Also, rising sea levels lead to more frequent and severe coastal flooding which can result in an overflow of sewage systems and carry pollutants into waterways. This increase in contamination can endanger public health and harm aquatic ecosystems. Understanding and addressing the effects of sea level rise on water quality is significant for protecting freshwater resources, preserving ecosystems, and ensuring the sustainability of coastal communities. Our hypothesis to address this research project is: If sea level rise has increased from 2010 to 2024 in the state of Florida, then the salinity levels in freshwater sources will also have increased, degrading overall freshwater quality. This will require two data sets: (1) sea level rise data from NOAA’s Tides and Current database and (2) freshwater quality (specifically, salinity) data from the USGS National Water Information System. From this data, we will construct a Spearman Correlation Test to determine correlation, a time series to determine trends in the relationship across time, and a faceted scatter plot to visualize the trends more clearly.
 
 # 3. Data: 
-# The data used in this project cover 2 environmental variables that were measured between 2010 and 2024 across Florida. The data we are using for this project come from 2 main sources: the salinity measurements from USGS and the sea level trends from NOAA. The first comes from water quality data available in the USGS website for salinity of water between 2010 and 2024 from three different gauges near Virginia Key, Pensacola, and Panama City Beach. The salinity data were downloaded from the USGS database. The sea level data comes from NOAA, specifically from the Virginia Key, Pensacola, and Panama City Beach stations. The first variable is sea level (in meters), which shows the trend in sea level rise throughout the years. The second is salinity (ppth), which shows fluctuations of salinity of the area in this timeframe. Salinity data are presented in the form of a time series that varies over time, while the data on sea level show an increasing trend. Sites and gauges were selected based on the nearest distance in km. Three gauges from the USGS water quality data set were selected to be paired with the Virginia Key, Pensacola, and Panama City Beach sites from the NOAA sea level rise data set. We will need to clean the sea level rise data by altering the format of the CSV (code given by Prof. Johnson) and merging all three sites’ datasets together. We will need to clean the USGS water quality data set by selecting for only the three specified locations and only the variables we need (such as salinity, date, latitude, longitude, and site ID).
+The data used in this project cover 2 environmental variables that were measured between 2010 and 2024 across Florida. The data we are using for this project come from 2 main sources: the salinity measurements from USGS and the sea level trends from NOAA. The first comes from water quality data available in the USGS website for salinity of water between 2010 and 2024 from four different gauges near Vaca Key, Florida. The salinity data were downloaded from the USGS database. The sea level data comes from NOAA, specifically from the Vaca Key station. The first variable is sea level (in meters), which shows the trend in sea level rise throughout the years. The second is salinity (ppth), which shows fluctuations of salinity of the area in this time frame. Salinity data are presented in the form of a time series that varies over time, while the data on sea level show an increasing trend. Sites and gauges were selected based on the nearest distance in km. Four gauges from the USGS water quality data set were selected to be paired with the Vaca Key site from the NOAA sea level rise data set. We will need to clean the sea level rise data by altering the format of the CSV (code given by Prof. Johnson), select for only columns needed in the salinity data, and properly formatting the date columns in both data sets.
 
 # Sea level rise visual
-# The sea level in Virginia Key shows an increasing trend from 2010 through 2024. This trend is highlighted in the following image, which shows a regression line and the monthly fluctuations on sea level average of Virginia Key, Florida.
+## The sea level in Vaca Key shows an increasing trend from 2010 through 2024. This trend is highlighted in the following image, which also shows a regression line and the monthly fluctuations on sea level average of Vaca Key, Florida.
 
 ```{r}
 library(tidyverse)
 library(lubridate)
+library(dplyr)
+library(readr)
+library(purrr)
+library(tsibble)
+library(fable)
+library(ggplot2)
+library(tidyr)
+library(modeltime)
+library(timetk)
+library(tidymodels)
+library(parsnip)
 
-slr_data <- read_csv("8723214_SLR_VirginiaKey.csv", skip = 4, 
+slr_data <- read_csv("8723970_VacaKey.csv", skip = 4, 
                      col_names = c("Year", "Month", "Monthly_MSL", "Linear_Trend", "High_Conf", "Low_Conf"))
 
 slr_data <- slr_data %>%
   filter(!is.na(Year)) %>%
   mutate(
-    Monthly_MSL = as.numeric(Monthly_MSL),  # convert to numeric!
+    Monthly_MSL = as.numeric(Monthly_MSL),
     date = make_date(Year, Month, 1)
   ) %>%
   filter(date >= as.Date("2010-01-01") & date <= as.Date("2024-12-31"))
@@ -53,7 +64,7 @@ ggplot(slr_data, aes(x = date, y = Monthly_MSL)) +
     labels = scales::number_format(accuracy = 0.01)
   ) +
   labs(
-    title = "Sea Level Trend at Virginia Key (2010–2024)",
+    title = "Sea Level Trend at Vaca Key (2010–2024)",
     x = "Date",
     y = "Monthly Mean Sea Level (meters)"
   ) +
@@ -66,20 +77,183 @@ ggplot(slr_data, aes(x = date, y = Monthly_MSL)) +
 # Salinity levels visual
 ## Salinity in Miami-Dade county, Florida shows fluctuations throughout the time frame used, with noticeable increases in certain periods of time. This trend can be seen in the following image, which shows how salinity levels have changed between 2010 and 2024.
 ```{r}
-salinity_data <- read.csv("salinity copy.csv")
+salinity_data_visual <- read.csv("salinity.csv")
 
-salinity_data <- salinity_data %>%
+salinity_data_visual <- salinity_data_visual %>%
   mutate(Activity_StartDate = as.Date(Activity_StartDate)) %>%
   filter(Activity_StartDate >= as.Date("2010-01-01") & Activity_StartDate <= as.Date("2024-12-31"),
-         Location_CountyName == "Miami-Dade County")
+         Location_Identifier == "USGS-251241080385301")
 
-ggplot(salinity_data, aes(x = Activity_StartDate, y = Result_Measure)) +
+ggplot(salinity_data_visual, aes(x = Activity_StartDate, y = Result_Measure)) +
   geom_line(color = "steelblue", size = 0.5) +
-  labs(title = "Salinity in Miami-Dade County (ppth, 2010–2024)",
+  labs(title = "Salinity at Guage USGS-251241080385301 (ppth, 2010–2024)",
        x = "Date",
        y = "Salinity (ppth)") +
   theme_minimal()
 ```
 
 # 4. Methods: 
-# We will be using a spearman correlation test, linear regression model, and ggplot to analyze our data to answer our research question. I think we do have everything we need for this: sea level rise data (2010-2024 for 18 sites in Florida), water quality (salinity) data (2010-2024 for all gauges in Florida). Latitude and longitudes were included for each point of the water quality data. We do need supplemental latitude and longitude data for the sea level rise points to match them with water quality data, but I was able to collect this from NOAA and record them in an excel sheet. I think the most challenging part of this process will be selecting which sites to use from the two data sets, as we will need to determine which three sites align most closely by location between the sets of data. The way their lat and longitudes were recorded are not identical, and the location data for sea level rise was recorded separately from the actual sea level data which makes this more difficult. I think some potential challenges in the analysis portion of the project that may arise are avoiding other confounding variables as hydrological conditions vary greatly across sites. Also, since this is an observational study, our analysis will only be able to determine correlation instead of causation, which limits the meaning of our results. Our selected tests, however, will be useful in determining our final results. The spearman's correlation test will first determine if there is a correlation between the two variables (sea level rise and salinity). Once we've determined a correlation, the linear regression model will allow us to test the strength of this correlation to determine significance. Finally, employing a scatter plot will be useful for easier visualization of this relationship to confirm our results. 
+Prior to conducting any analysis, we had to determine which gauges to extract from the list of Florida gauges in the USGS water quality and NOAA sea level data bases. We first chose one sea level rise gauge to use (based on proximity to other USGS gauges) and then selected the four nearest USGS gauges by distance in km, according to latitude and longitudes provided in the dataset. To answer our research question for this project, we conducted a spearman correlation test, time series with forecasting, and ggplot. First, we cleaned the sea level rise data by removing the metadata from the file and adding a column for gauge ID. We then cleaned the salinity data by selecting for only the necessary columns for analysis: columns denoting location, date of collection, descriptions of results, and result measurements. We also ensured both sea level and salinity data sets only included dates from 2010-2024, as this is the range of years we narrowed in on for analysis. Once this was complete, we began the analysis. We first conducted a time series in R studio highlighting trends in salinity over time. Next, we used a prophet model to show forecasted trends in salinity over the next five years (2025 - 2029). We then visualized the trends in salinity and sea level rise by employing a faceted ggplot showing both salinity at each gauge and sea level rise across the 14 years we analyzed. Finally, we employed spearman correlation tests at each gauge to test for significance in the relationships between sea level rise and freshwater salinity in Florida.  
+
+#5. Analysis 
+Cleaning sea level rise data
+```{r}
+f <- c("8723970_VacaKey.csv")
+SLR_data <- map(f, function(i) {
+  readr::read_csv(i, skip = 5, show_col_types = FALSE) |> 
+    dplyr::mutate(id = gsub(".csv", "", basename(i)))
+}) |> 
+  bind_rows()
+
+salinity_data <- read_csv("salinity.csv")
+cleaned_salinity_data <- salinity_data %>%
+   select(
+    Location_Identifier,
+    Location_Type,
+    Location_State,
+    Location_CountryName,
+    Location_CountyName,
+    Location_Latitude,
+    Location_Longitude,
+    Activity_Media,
+    Activity_MediaSubdivision,
+    Activity_StartDate,
+    Result_Characteristic,
+    Result_CharacteristicUserSupplied,
+    Result_Measure,
+    Result_MeasureUnit
+  )
+```
+
+Time Series Analysis
+```{r}
+salinity_yearly_ts <- cleaned_salinity_data %>%
+  filter(Result_Characteristic == "Salinity",
+         year(Activity_StartDate) >= 2010,
+         year(Activity_StartDate) <= 2024) %>%
+  mutate(date = as.Date(Activity_StartDate),
+         year = year(date)) %>%
+  group_by(Location_Identifier, year) %>%
+  summarise(yearly_salinity = mean(Result_Measure, na.rm = TRUE), .groups = "drop") %>%
+  mutate(year_date = as.Date(paste0(year, "-01-01"))) %>%
+  as_tsibble(index = year_date, key = Location_Identifier)
+
+autoplot(salinity_yearly_ts, yearly_salinity) +
+  facet_wrap(~Location_Identifier, scales = "free_y") +
+  labs(title = "Yearly Salinity Time Series (2010–2024)",
+       y = "Mean Salinity", x = "Year")
+```
+
+Forecasting:
+```{r}
+my_date <- as.Date("2024-12-31")
+
+combined_train_df <- salinity_yearly_ts %>%
+  filter(year_date < my_date) %>%
+  index_by(year_date) %>%
+  summarise(yearly_salinity = mean(yearly_salinity, na.rm = TRUE)) %>%
+  as_tibble()
+
+model_prophet <- prophet_reg(seasonality_yearly = TRUE) %>%
+  set_engine("prophet")
+fit_prophet <- model_prophet %>% fit(yearly_salinity ~ year_date, data = combined_train_df)
+
+future <- combined_train_df %>%
+  future_frame(.date_var = year_date, .length_out = 5)
+
+fitted_models <- modeltime_table(fit_prophet)
+forecasts <- fitted_models %>%
+  modeltime_forecast(new_data = future, actual_data = combined_train_df)
+
+ggplot(forecasts, aes(x = .index, y = .value, color = .model_desc)) +
+  geom_line(size = 1) +
+  labs(title = "Five Year Forecast for Average Freshwater Salinity in Florida",
+       x = "Date", y = "Predicted Salinity") +
+  theme_minimal()
+```
+
+Visualization:
+```{r}
+salinity_yearly <- cleaned_salinity_data %>%
+  filter(Result_Characteristic == "Salinity",
+         year(Activity_StartDate) >= 2010,
+         year(Activity_StartDate) <= 2024) %>%
+  mutate(year = year(Activity_StartDate)) %>%
+  group_by(Location_Identifier, year) %>%
+  summarise(value = mean(Result_Measure, na.rm = TRUE), .groups = "drop") %>%
+  mutate(Type = "Salinity")
+
+slr_clean <- SLR_data %>%
+  filter(Year >= 2010 & Year <= 2024) %>%
+  mutate(date = as.Date(paste(Year, Month, "01", sep = "-"))) %>%
+  select(date, Monthly_MSL)
+
+slr_yearly <- slr_clean %>%
+  mutate(year = year(date)) %>%
+  filter(year >= 2010 & year <= 2024) %>%
+  group_by(year) %>%
+  summarise(value = mean(Monthly_MSL, na.rm = TRUE), .groups = "drop") %>%
+  mutate(Type = "SLR",
+         Location_Identifier = "SLR_gauge") 
+
+combined_yearly <- bind_rows(salinity_yearly, slr_yearly)
+
+ggplot(combined_yearly, aes(x = year, y = value, color = Location_Identifier)) +
+  geom_point(size = 2) +  # scatter points
+  geom_smooth(method = "loess", se = FALSE, size = 1, linetype = "solid") +  # smoothed curve
+  geom_smooth(method = "lm", se = FALSE, size = 1, linetype = "dashed") +  # linear trend line
+  facet_wrap(~Location_Identifier, scales = "free_y") +
+  labs(
+    title = "Yearly Averages of Salinity and Sea Level Rise (2010–2024)",
+    x = "Year",
+    y = "Value (SLR = m, salinity = ppth)",
+    color = "Gauge"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none") 
+```
+
+Spearman Correlation Test:
+```{r}
+slr_clean <- SLR_data %>%
+  filter(Year >= 2010 & Year <= 2024) %>%
+  mutate(date = as.Date(paste(Year, Month, "01", sep = "-"))) %>%
+  select(date, Monthly_MSL)
+
+salinity_filtered <- cleaned_salinity_data %>%
+  filter(Result_Characteristic == "Salinity",
+         year(Activity_StartDate) >= 2010,
+         year(Activity_StartDate) <= 2024) %>%
+  mutate(date = as.Date(Activity_StartDate)) %>%
+  group_by(Location_Identifier, year = year(date), month = month(date)) %>%
+  summarise(mean_salinity = mean(Result_Measure, na.rm = TRUE), .groups = "drop") %>%
+  mutate(date = as.Date(paste(year, month, "01", sep = "-")))
+
+cor_results <- salinity_filtered %>%
+  split(.$Location_Identifier) %>%
+  map(~{
+    merged <- inner_join(.x, slr_clean, by = "date")
+    test <- cor.test(merged$mean_salinity, merged$Monthly_MSL, method = "spearman")
+    tibble(
+      gauge = unique(.x$Location_Identifier),
+      estimate = test$estimate,
+      p_value = test$p.value
+    )
+  }) %>%
+  bind_rows()
+
+print(cor_results)
+```
+
+# 6. Results:
+With gauge USGS-251032080473400, salinity fluctuated over time, with there being several peaks between 2012 and 2018. There is then a downward trend from 2019 to 2024. Gauge location USGS-251115081075800 shows salinity rises throughout 2011 to 2017 where it significantly decreases in mean salinity. Gauge location USGS-251152080370900 shows a significant peak in salinity in 2015 and then begins to fluctuate between the mean of 20 ppth through 10. Gauge location USGS-251241080385301 salinity was low in 2013 then stabilized after 2016 for a period of about 4 years. Yet by 2020 the salinity significantly decreased and is now rising back to a mean of 28 as of 2024. Overall, salinity in Florida seems to fluctuate heavily over time, with two of the gauges analyzed observing a gradual increase in recent years.
+A five year salinity forecast was generated in Rstudio for Florida freshwater systems by aggregating data from all chosen gauges. Historical salinity data from 2010 to 2024 is shown in red. The model generated forecast from 2025 to 2029 is shown in blue. The actual salinity data for all gauges (red) fluctuated around 23 to 33 ppth for majority of the 14 years, hitting a low of about 18 in 2024. The forecasted salinity levels (blue) are predicted to be relatively stable over the 5 year period (around 22 ppth), indicating no extreme changes in salinity should occur within the next 5 years in Florida. 
+The results of the scatter plot visualization show there is no clear relationship between Sea Level Rise (SLR) trends and any of the salinity time series for the four gauges. The SLR gauge displays a steady upward trend. Yet the remaining salinity gauges show varied patterns and fluctuating salinity trends. The faceted scatterplot was created to visualize yearly average values for SLR and salinity across four USGS monitoring stations in Florida from 2010 to 2024. The dots represent observed annual values from the original dataset. The solid lines show the yearly observations. The dashed lines represent linear trend lines fitted to the data. Thus, as SLR continuously increases, salinity levels may increase, decrease, or remain relatively stable across time, varying with each gauge.
+According to the spearman correlation tests, none of the gauges showed a statistically significant correlation with sea level rise (all the p-values > 0.05). These results suggest there is no significant relationship between sea level rise and the selected Florida USGS water gauge salinity measurements.
+
+# 7. Discussion:
+The obtained results in this project show that, despite the constant increase in sea level registered in stations like Vaca Key between 2010 and 2024, no statistically relevant relationship between this increase and levels of salinity on freshwater monitored in Florida was shown. This lack of significant correlation, evidenced by the p values above 0.05 in all of the tests of Spearman correlation, suggests that that increase in sea level hasn’t had a uniform or direct impact on the salinity of the freshwater during the study period. 
+The observed variability in the salinity data between different stations could be influenced by multiple factors other than sea level rise. These factors may include local hydrogeological conditions, land use, precipitation trend changes, human activity like pumping of aquifers or wastewater management, as well as proximity to urbanized or industrial areas.
+Additionally, although the time series model showed fluctuations in the salinity with certain upward and downward trends between stations, the forecast made with the Prophet model indicates that the salinity levels will be maintained relatively stable in the near future. This prediction reinforces the idea that other elements could be cushioning or masking the effect of sea level rise over the quality of fresh water.
+Using a single sea level gauge and comparing it to nearby water quality stations was a practical strategy for this exploratory analysis. However, future research could benefit from a multivariate approach that incorporates other environmental and socio economic factors in order to better understand the dynamic between sea level rise and water quality. 
+Finally, even though there wasn’t a direct relation between sea level rise and salinity in this data sample, the continued monitoring of both parameters is still crucial. As climate change progresses, the cumulative effects could manifest more clearly in the long term, which highlights the importance of expanding the spatial and temporal coverage of these studies in Florida and other vulnerable coastal regions.

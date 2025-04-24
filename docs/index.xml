@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Archiving
+and Interchange DTD v1.2 20190208//EN" "JATS-archivearticle1.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" dtd-version="1.2" article-type="other">
+  <front>
+    <article-meta>
+      <title-group>
+        <article-title>ESS 330 Final Project</article-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author" corresp="yes">
+          <name>
+            <surname>McLaughlin</surname>
+            <given-names>Sara</given-names>
+          </name>
+          <string-name>Sara McLaughlin</string-name>
+          <role vocab="https://credit.niso.org" vocab-term="writing – original draft" vocab-term-identifier="https://credit.niso.org/contributor-roles/writing-original-draft/">writing</role>
+          <xref ref-type="aff" rid="aff-1">a</xref>
+          <xref ref-type="corresp" rid="cor-1">*</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Farmer</surname>
+            <given-names>Stephanie</given-names>
+          </name>
+          <string-name>Stephanie Farmer</string-name>
+          <role vocab="https://credit.niso.org" vocab-term="writing – original draft" vocab-term-identifier="https://credit.niso.org/contributor-roles/writing-original-draft/">writing</role>
+          <xref ref-type="aff" rid="aff-1">a</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Gherson</surname>
+            <given-names>Kiara Gleiser</given-names>
+          </name>
+          <string-name>Kiara Gleiser Gherson</string-name>
+          <role vocab="https://credit.niso.org" vocab-term="writing – original draft" vocab-term-identifier="https://credit.niso.org/contributor-roles/writing-original-draft/">writing</role>
+          <xref ref-type="aff" rid="aff-1">a</xref>
+        </contrib>
+      </contrib-group>
+      <aff id="aff-1">
+        <institution-wrap>
+          <institution>Colorado State University</institution>
+        </institution-wrap>
+      </aff>
+      <author-notes>
+        <corresp id="cor-1"/>
+      </author-notes>
+      <history/>
+    </article-meta>
+  </front>
+  <body>
+    <sec id="title">
+      <title>1. Title:</title>
+    </sec>
+    <sec id="the-effects-of-sea-level-rise-on-freshwater-quality-within-the-state-of-florida-from-2010---2024">
+      <title>The Effects of Sea Level Rise on Freshwater Quality Within the
+  State of Florida from 2010 - 2024</title>
+    </sec>
+    <sec id="introduction">
+      <title>2. Introduction:</title>
+    </sec>
+    <sec id="sea-level-rise-has-had-significant-impacts-on-water-quality.-as-the-sea-level-increases-saltwater-intrusion-can-contaminate-freshwater-aquifers-which-reduce-the-availability-of-clean-drinking-water-werner2009.-the-intrusion-of-saltwater-also-degrades-wetlands-which-act-as-a-natural-water-filter-and-are-habitats-for-diverse-aquatic-species.-the-decrease-in-wetlands-diminishes-their-ability-to-buffer-against-storm-surges-and-filter-pollutants-further-compromising-the-water-quality-dessu2018.-also-rising-sea-levels-lead-to-more-frequent-and-severe-coastal-flooding-which-can-result-in-an-overflow-of-sewage-systems-and-carry-pollutants-into-waterways.-this-increase-in-contamination-can-endanger-public-health-and-harm-aquatic-ecosystems.-understanding-and-addressing-the-effects-of-sea-level-rise-on-water-quality-is-significant-for-protecting-freshwater-resources-preserving-ecosystems-and-ensuring-the-sustainability-of-coastal-communities.-our-hypothesis-to-address-this-research-project-is-if-sea-level-rise-has-increased-from-2010-to-2024-in-the-state-of-florida-then-the-salinity-levels-in-freshwater-sources-will-also-have-increased-degrading-overall-freshwater-quality.-this-will-require-two-data-sets-1-sea-level-data-from-noaas-tides-and-current-database-and-2-freshwater-quality-specifically-salinity-data-from-the-usgs-national-water-information-system.-from-this-data-we-will-construct-a-spearman-correlation-test-to-determine-correlation-a-linear-regression-model-to-determine-the-strength-of-the-relationship-and-a-scatter-plot-to-visualize-the-relationship.">
+      <title>Sea Level rise has had significant impacts on water quality. As
+  the sea level increases, saltwater intrusion can contaminate
+  freshwater aquifers which reduce the availability of clean drinking
+  water
+  (<xref alt="Werner &amp; Simmons, 2009" rid="ref-werner2009" ref-type="bibr">Werner
+  &amp; Simmons, 2009</xref>). The intrusion of saltwater also degrades
+  wetlands, which act as a natural water filter and are habitats for
+  diverse aquatic species. The decrease in wetlands diminishes their
+  ability to buffer against storm surges and filter pollutants, further
+  compromising the water quality
+  (<xref alt="Dessu et al., 2018" rid="ref-dessu2018" ref-type="bibr">Dessu
+  et al., 2018</xref>). Also, rising sea levels lead to more frequent
+  and severe coastal flooding which can result in an overflow of sewage
+  systems and carry pollutants into waterways. This increase in
+  contamination can endanger public health and harm aquatic ecosystems.
+  Understanding and addressing the effects of sea level rise on water
+  quality is significant for protecting freshwater resources, preserving
+  ecosystems and ensuring the sustainability of coastal communities. Our
+  hypothesis to address this research project is: If sea level rise has
+  increased from 2010 to 2024 in the state of Florida, then the salinity
+  levels in freshwater sources will also have increased, degrading
+  overall freshwater quality. This will require two data sets: (1) sea
+  level data from NOAA’s Tides and Current database and (2) freshwater
+  quality (specifically, salinity) data from the USGS National Water
+  Information System. From this data, we will construct a spearman
+  correlation test to determine correlation, a linear regression model
+  to determine the strength of the relationship, and a scatter plot to
+  visualize the relationship.</title>
+    </sec>
+    <sec id="data">
+      <title>3. Data:</title>
+    </sec>
+    <sec id="the-data-used-in-this-project-cover-2-environmental-variables-that-were-measured-between-2010-and-2024-across-florida.-the-data-we-are-using-for-this-project-come-from-2-main-sources-the-salinity-measurements-from-usgs-and-the-sea-level-trends-from-noaa.-the-first-comes-from-water-quality-data-available-in-the-usgs-website-for-salinity-of-water-between-2010-and-2024-from-three-different-gauges-near-virginia-key-pensacola-and-panama-city-beach.-the-salinity-data-were-downloaded-from-the-usgs-database.-the-sea-level-data-comes-from-noaa-specifically-from-the-virginia-key-pensacola-and-panama-city-beach-stations.-the-first-variable-is-sea-level-in-meters-which-shows-the-trend-in-sea-level-rise-throughout-the-years.-the-second-is-salinity-ppth-which-shows-fluctuations-of-salinity-of-the-area-in-this-timeframe.-salinity-data-are-presented-in-the-form-of-a-time-series-that-varies-over-time-while-the-data-on-sea-level-show-an-increasing-trend.-sites-and-gauges-were-selected-based-on-the-nearest-distance-in-km.-three-gauges-from-the-usgs-water-quality-data-set-were-selected-to-be-paired-with-the-virginia-key-pensacola-and-panama-city-beach-sites-from-the-noaa-sea-level-rise-data-set.-we-will-need-to-clean-the-sea-level-rise-data-by-altering-the-format-of-the-csv-code-given-by-prof.-johnson-and-merging-all-three-sites-datasets-together.-we-will-need-to-clean-the-usgs-water-quality-data-set-by-selecting-for-only-the-three-specified-locations-and-only-the-variables-we-need-such-as-salinity-date-latitude-longitude-and-site-id.">
+      <title>The data used in this project cover 2 environmental variables
+  that were measured between 2010 and 2024 across Florida. The data we
+  are using for this project come from 2 main sources: the salinity
+  measurements from USGS and the sea level trends from NOAA. The first
+  comes from water quality data available in the USGS website for
+  salinity of water between 2010 and 2024 from three different gauges
+  near Virginia Key, Pensacola, and Panama City Beach. The salinity data
+  were downloaded from the USGS database. The sea level data comes from
+  NOAA, specifically from the Virginia Key, Pensacola, and Panama City
+  Beach stations. The first variable is sea level (in meters), which
+  shows the trend in sea level rise throughout the years. The second is
+  salinity (ppth), which shows fluctuations of salinity of the area in
+  this timeframe. Salinity data are presented in the form of a time
+  series that varies over time, while the data on sea level show an
+  increasing trend. Sites and gauges were selected based on the nearest
+  distance in km. Three gauges from the USGS water quality data set were
+  selected to be paired with the Virginia Key, Pensacola, and Panama
+  City Beach sites from the NOAA sea level rise data set. We will need
+  to clean the sea level rise data by altering the format of the CSV
+  (code given by Prof. Johnson) and merging all three sites’ datasets
+  together. We will need to clean the USGS water quality data set by
+  selecting for only the three specified locations and only the
+  variables we need (such as salinity, date, latitude, longitude, and
+  site ID).</title>
+    </sec>
+    <sec id="sea-level-rise-visual">
+      <title>Sea level rise visual</title>
+    </sec>
+    <sec id="the-sea-level-in-virginia-key-shows-an-increasing-trend-from-2010-through-2024.-this-trend-is-highlighted-in-the-following-image-which-shows-a-regression-line-and-the-monthly-fluctuations-on-sea-level-average-of-virginia-key-florida.">
+      <title>The sea level in Virginia Key shows an increasing trend from
+  2010 through 2024. This trend is highlighted in the following image,
+  which shows a regression line and the monthly fluctuations on sea
+  level average of Virginia Key, Florida.</title>
+      <code language="r script">library(tidyverse)</code>
+      <preformat>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</preformat>
+      <code language="r script">library(lubridate)
+
+slr_data &lt;- read_csv("8723214_SLR_VirginiaKey.csv", skip = 4, 
+                     col_names = c("Year", "Month", "Monthly_MSL", "Linear_Trend", "High_Conf", "Low_Conf"))</code>
+      <preformat>Warning: One or more parsing issues, call `problems()` on your data frame for details,
+e.g.:
+  dat &lt;- vroom(...)
+  problems(dat)</preformat>
+      <preformat>Rows: 1064 Columns: 6
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (6): Year, Month, Monthly_MSL, Linear_Trend, High_Conf, Low_Conf
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</preformat>
+      <code language="r script">slr_data &lt;- slr_data %&gt;%
+  filter(!is.na(Year)) %&gt;%
+  mutate(
+    Monthly_MSL = as.numeric(Monthly_MSL),  # convert to numeric!
+    date = make_date(Year, Month, 1)
+  ) %&gt;%
+  filter(date &gt;= as.Date("2010-01-01") &amp; date &lt;= as.Date("2024-12-31"))</code>
+      <preformat>Warning: There were 3 warnings in `mutate()`.
+The first warning was:
+ℹ In argument: `Monthly_MSL = as.numeric(Monthly_MSL)`.
+Caused by warning:
+! NAs introduced by coercion
+ℹ Run `dplyr::last_dplyr_warnings()` to see the 2 remaining warnings.</preformat>
+      <code language="r script">ggplot(slr_data, aes(x = date, y = Monthly_MSL)) +
+  geom_line(color = "#1F77B4", alpha = 0.5) +
+  geom_smooth(method = "lm", color = "#D62728", se = FALSE, size = 1.2) +
+  scale_y_continuous(
+    limits = c(0, 0.30),
+    breaks = seq(0, 0.30, by = 0.05),
+    labels = scales::number_format(accuracy = 0.01)
+  ) +
+  labs(
+    title = "Sea Level Trend at Virginia Key (2010–2024)",
+    x = "Date",
+    y = "Monthly Mean Sea Level (meters)"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.y = element_text(size = 8)
+  )</code>
+      <preformat>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.</preformat>
+      <preformat>`geom_smooth()` using formula = 'y ~ x'</preformat>
+      <preformat>Warning: Removed 6 rows containing non-finite outside the scale range
+(`stat_smooth()`).</preformat>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="index_files/figure-jats/unnamed-chunk-1-1.png"/>
+    </sec>
+    <sec id="salinity-levels-visual">
+      <title>Salinity levels visual</title>
+      <sec id="salinity-in-miami-dade-county-florida-shows-fluctuations-throughout-the-time-frame-used-with-noticeable-increases-in-certain-periods-of-time.-this-trend-can-be-seen-in-the-following-image-which-shows-how-salinity-levels-have-changed-between-2010-and-2024.">
+        <title>Salinity in Miami-Dade county, Florida shows fluctuations
+    throughout the time frame used, with noticeable increases in certain
+    periods of time. This trend can be seen in the following image,
+    which shows how salinity levels have changed between 2010 and
+    2024.</title>
+        <code language="r script">salinity_data &lt;- read.csv("salinity copy.csv")
+
+salinity_data &lt;- salinity_data %&gt;%
+  mutate(Activity_StartDate = as.Date(Activity_StartDate)) %&gt;%
+  filter(Activity_StartDate &gt;= as.Date("2010-01-01") &amp; Activity_StartDate &lt;= as.Date("2024-12-31"),
+         Location_CountyName == "Miami-Dade County")
+
+ggplot(salinity_data, aes(x = Activity_StartDate, y = Result_Measure)) +
+  geom_line(color = "steelblue", size = 0.5) +
+  labs(title = "Salinity in Miami-Dade County (ppth, 2010–2024)",
+       x = "Date",
+       y = "Salinity (ppth)") +
+  theme_minimal()</code>
+        <graphic mimetype="image" mime-subtype="png" xlink:href="index_files/figure-jats/unnamed-chunk-2-1.png"/>
+      </sec>
+    </sec>
+    <sec id="methods">
+      <title>4. Methods:</title>
+    </sec>
+  </body>
+  <back>
+    <ref-list>
+      <title>We will be using a spearman correlation test, linear regression
+  model, and ggplot to analyze our data to answer our research question.
+  I think we do have everything we need for this: sea level rise data
+  (2010-2024 for 18 sites in Florida), water quality (salinity) data
+  (2010-2024 for all gauges in Florida). Latitude and longitudes were
+  included for each point of the water quality data. We do need
+  supplemental latitude and longitude data for the sea level rise points
+  to match them with water quality data, but I was able to collect this
+  from NOAA and record them in an excel sheet. I think the most
+  challenging part of this process will be selecting which sites to use
+  from the two data sets, as we will need to determine which three sites
+  align most closely by location between the sets of data. The way their
+  lat and longitudes were recorded are not identical, and the location
+  data for sea level rise was recorded separately from the actual sea
+  level data which makes this more difficult. I think some potential
+  challenges in the analysis portion of the project that may arise are
+  avoiding other confounding variables as hydrological conditions vary
+  greatly across sites. Also, since this is an observational study, our
+  analysis will only be able to determine correlation instead of
+  causation, which limits the meaning of our results. Our selected
+  tests, however, will be useful in determining our final results. The
+  spearman’s correlation test will first determine if there is a
+  correlation between the two variables (sea level rise and salinity).
+  Once we’ve determined a correlation, the linear regression model will
+  allow us to test the strength of this correlation to determine
+  significance. Finally, employing a scatter plot will be useful for
+  easier visualization of this relationship to confirm our
+  results.</title>
+      <ref id="ref-werner2009">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Werner</surname>
+              <given-names>Adrian D</given-names>
+            </name>
+            <name>
+              <surname>Simmons</surname>
+              <given-names>Craig T</given-names>
+            </name>
+          </person-group>
+          <article-title>Impact of sea-level rise on sea water intrusion in coastal aquifers</article-title>
+          <source>Groundwater</source>
+          <publisher-name>Wiley Online Library</publisher-name>
+          <year iso-8601-date="2009">2009</year>
+          <volume>47</volume>
+          <issue>2</issue>
+          <fpage>197</fpage>
+          <lpage>204</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-dessu2018">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Dessu</surname>
+              <given-names>Shimelis B</given-names>
+            </name>
+            <name>
+              <surname>Price</surname>
+              <given-names>René M</given-names>
+            </name>
+            <name>
+              <surname>Troxler</surname>
+              <given-names>Tiffany G</given-names>
+            </name>
+            <name>
+              <surname>Kominoski</surname>
+              <given-names>John S</given-names>
+            </name>
+          </person-group>
+          <article-title>Effects of sea-level rise and freshwater management on long-term water levels and water quality in the florida coastal everglades</article-title>
+          <source>Journal of Environmental Management</source>
+          <publisher-name>Elsevier</publisher-name>
+          <year iso-8601-date="2018">2018</year>
+          <volume>211</volume>
+          <fpage>164</fpage>
+          <lpage>176</lpage>
+        </element-citation>
+      </ref>
+    </ref-list>
+  </back>
+</article>
