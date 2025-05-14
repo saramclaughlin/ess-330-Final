@@ -8,6 +8,7 @@ manuscript:
 format:
   html:
     self-contained: true
+    code-fold: true
     comments:
       hypothesis: true
   docx: default

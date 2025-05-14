@@ -17,18 +17,32 @@ authors:
 bibliography: references.bib
 csl: apa.csl
 ---
-# 1. Title:
-The Effects of Sea Level Rise on Freshwater Quality Within the State of Florida from 2010 - 2024  
+# Freshwater Quality Analysis as an Effect of Sea Level Rise
 
-# 2. Introduction:
-Sea Level rise has had significant impacts on water quality. As the sea level increases, saltwater intrusion can contaminate freshwater aquifers which reduce the availability of clean drinking water [@werner2009]. The intrusion of saltwater also degrades wetlands, which act as a natural water filter and are habitats for diverse aquatic species. The decrease in wetlands diminishes their ability to buffer against storm surges and filter pollutants, further compromising the water quality [@dessu2018]. Also, rising sea levels lead to more frequent and severe coastal flooding which can result in an overflow of sewage systems and carry pollutants into waterways. This increase in contamination can endanger public health and harm aquatic ecosystems. Understanding and addressing the effects of sea level rise on water quality is significant for protecting freshwater resources, preserving ecosystems, and ensuring the sustainability of coastal communities. Our hypothesis to address this research project is: If sea level rise has increased from 2010 to 2024 in the state of Florida, then the salinity levels in freshwater sources will also have increased, degrading overall freshwater quality. This will require two data sets: (1) sea level rise data from NOAA’s Tides and Current database and (2) freshwater quality (specifically, salinity) data from the USGS National Water Information System. From this data, we will construct a Spearman Correlation Test to determine correlation, a time series to determine trends in the relationship across time, and a faceted scatter plot to visualize the trends more clearly.
+## Abstract:
+Rising sea levels, driven by climate change, are known to cause saltwater intrusion into freshwater systems, potentially compromising water quality and threatening ecosystem and human health. This study analyzes the effects of sea level rise from 2010 to 2024 in Southern Florida on increased salinity in nearby freshwater sources. We hypothesized that rising sea levels would be associated with higher salinity levels, thus degrading freshwater quality.
 
-# 3. Data: 
-The data used in this project cover 2 environmental variables that were measured between 2010 and 2024 across Florida. The data we are using for this project come from 2 main sources: the salinity measurements from USGS and the sea level trends from NOAA. The first comes from water quality data available in the USGS website for salinity of water between 2010 and 2024 from four different gauges near Vaca Key, Florida. The salinity data were downloaded from the USGS database. The sea level data comes from NOAA, specifically from the Vaca Key station. The first variable is sea level (in meters), which shows the trend in sea level rise throughout the years. The second is salinity (ppth), which shows fluctuations of salinity of the area in this time frame. Salinity data are presented in the form of a time series that varies over time, while the data on sea level show an increasing trend. Sites and gauges were selected based on the nearest distance in km. Four gauges from the USGS water quality data set were selected to be paired with the Vaca Key site from the NOAA sea level rise data set. We will need to clean the sea level rise data by altering the format of the CSV (code given by Prof. Johnson), select for only columns needed in the salinity data, and properly formatting the date columns in both data sets.
+To test this, we compiled sea level data from NOAA’s Vaca Key gauge and salinity data from four proximal USGS freshwater gauges. Data were cleaned and filtered for the 2010–2024 period. We then employed multiple analytical methods: time series visualizations, a Prophet forecasting model, faceted scatter plots, and Spearman’s rank correlation tests.
 
-# Sea level rise visual
-## The sea level in Vaca Key shows an increasing trend from 2010 through 2024. This trend is highlighted in the following image, which also shows a regression line and the monthly fluctuations on sea level average of Vaca Key, Florida.
+The results of these analyses showed high interannual and inter-gauge variability in salinity, even though sea level exhibits a clear increasing trend. The forecasting model predicted relatively stable salinity levels through 2029, serving as evidence that there is no direct correlation between sea level rise and salinity. Spearman’s tests confirmed no statistically significant correlation between sea level rise and salinity levels (p > 0.05 for all gauges).
 
+These findings suggest that local salinity dynamics in surface freshwater bodies are influenced by factors beyond sea level rise alone—such as hydrogeology, land use, and water management infrastructure. While the studied system appears resilient, the lack of correlation does not negate potential future risks. Continued monitoring and more complex, multivariable analyses are essential for anticipating climate-related threats to coastal freshwater sources as sea level will continue to rise.
+
+
+## Introduction:
+Sea Level rise has had significant impacts on water quality. As the sea level increases, saltwater intrusion can contaminate freshwater aquifers which reduces the availability of clean drinking water [@werner2009]. The intrusion of saltwater also degrades wetlands, which act as a natural water filter and are habitats for diverse aquatic species. The decrease in wetlands diminishes their ability to buffer against storm surges and filter pollutants, further compromising the water quality [@dessu2018]. Rising sea levels also lead to more frequent and severe coastal flooding which can result in an overflow of sewage systems and carry pollutants into waterways. This increase in contamination can endanger public health and harm aquatic ecosystems. A previous study in an estuary in Delaware has found statistically significant increases in salinity attributed to sea level rise after adjusting measurements for flow and seasonality [@ross2015]. Experimental studies have shown that the increase in salinity, both constant and fluctuating, drastically alter the nutrient dynamic in sediments in wetlands, generating important ecological implications for restoration and management of these ecosystems, which motivates analysis of how sea level rise could be affecting the water quality in coastal regions [@van2015]. In the Perla river estuary (China), a study revealed that a sea level rise of 1 meter could extend the saline intrusion up to 18 km inland and jeopardize the access to freshwater in densely populated areas [@wang2021]. All of these findings show the need to study similar trends in regions like Florida.
+
+Understanding and addressing the effects of sea level rise on water quality is important for protecting freshwater resources, preserving ecosystems and ensuring the sustainability of coastal communities. Our hypothesis to address this research project is: If sea level rise has increased from 2010 to 2024 in the state of Florida, then the salinity levels in freshwater sources will also have increased, degrading overall freshwater quality. This will require two data sets: (1) sea level data from NOAA’s Tides and Current database and (2) freshwater quality (specifically, salinity) data from the USGS National Water Information System. From this data, we have constructed Spearman's correlation tests to determine correlation, a time series to determine the strength of the relationship, a forecasted model to analyze future effects, and a scatter plot to visualize the relationship.
+
+## Methods: 
+For this analysis we narrowed in on the geographic location of Southern Florida as our study system. We obtained sea level rise data from NOAA’s Tides and Currents online database [@noaa]. We obtained salinity measurement data from the U.S. Geological Survey’s downloadable discrete sample data website [@usgs]. We determined which gauges to extract from the list of Florida gauges in the USGS water quality and NOAA sea level data based on closest proximity to one another. We first chose one sea level rise gauge to use (based on proximity to other USGS gauges) and then selected the four nearest USGS gauges by distance in km, according to latitude and longitudes provided in the dataset. The sea level rise gauge used was from Vaca Key, Florida, and all USGS gauges were in Southern Florida with a distance less than or equal to 73 km from the sea level gauge. 
+
+First, we cleaned the sea level rise data by removing the metadata from the downloaded file and adding a column for gauge ID. We then cleaned the salinity data by selecting only the necessary columns for analysis: columns denoting location, date of collection, descriptions of results (salinity), and result measurements (salinity in ppth). We also ensured both sea level and salinity data sets were filtered to only include dates from 2010-2024, as this is the range of years we focused on for our analysis. To begin, we first constructed a map plotting the sea level rise gauge and all four USGS salinity gauges to illustrate the locations of the gauges. This map also included surrounding bodies of water, in which the data was collected from the U.S. Geological Survey’s national map downloader [@hydrography]. 
+
+Once this was complete, we began the analysis. To answer our research question for this project, we conducted a time series, a forecasted model, a ggplot for easy visualization of trends, and spearman’s correlation tests. We first conducted a faceted time series in R studio highlighting trends in mean salinity over time per USGS gauge for the dates 01-01-2010 to 12-31-2024. Next, we used a prophet model to show forecasted trends in average salinity from all four gauges over the next five years (2025 - 2029). We then visualized the trends in salinity and sea level rise by employing a faceted ggplot showing both salinity at each USGS gauge and sea level rise at the singular NOAA gauge across the 14 years we analyzed. This visualization included actual points, a smoothed line curve, and a fitted trend line per gauge. Finally, we employed spearman’s correlation tests to test for significance in the relationships between sea level rise and freshwater salinity in Florida. Four spearman’s correlation tests were conducted in total, pairing each salinity gauge data to the singular sea level rise gauge data. 
+
+## Results:  
+Cleaning sea level rise data
 ```{r}
 library(tidyverse)
 library(lubridate)
@@ -44,60 +58,6 @@ library(timetk)
 library(tidymodels)
 library(parsnip)
 
-slr_data <- read_csv("8723970_VacaKey.csv", skip = 4, 
-                     col_names = c("Year", "Month", "Monthly_MSL", "Linear_Trend", "High_Conf", "Low_Conf"))
-
-slr_data <- slr_data %>%
-  filter(!is.na(Year)) %>%
-  mutate(
-    Monthly_MSL = as.numeric(Monthly_MSL),
-    date = make_date(Year, Month, 1)
-  ) %>%
-  filter(date >= as.Date("2010-01-01") & date <= as.Date("2024-12-31"))
-
-ggplot(slr_data, aes(x = date, y = Monthly_MSL)) +
-  geom_line(color = "#1F77B4", alpha = 0.5) +
-  geom_smooth(method = "lm", color = "#D62728", se = FALSE, size = 1.2) +
-  scale_y_continuous(
-    limits = c(0, 0.30),
-    breaks = seq(0, 0.30, by = 0.05),
-    labels = scales::number_format(accuracy = 0.01)
-  ) +
-  labs(
-    title = "Sea Level Trend at Vaca Key (2010–2024)",
-    x = "Date",
-    y = "Monthly Mean Sea Level (meters)"
-  ) +
-  theme_minimal() +
-  theme(
-    axis.text.y = element_text(size = 8)
-  )
-```
-
-# Salinity levels visual
-## Salinity in Miami-Dade county, Florida shows fluctuations throughout the time frame used, with noticeable increases in certain periods of time. This trend can be seen in the following image, which shows how salinity levels have changed between 2010 and 2024.
-```{r}
-salinity_data_visual <- read.csv("salinity.csv")
-
-salinity_data_visual <- salinity_data_visual %>%
-  mutate(Activity_StartDate = as.Date(Activity_StartDate)) %>%
-  filter(Activity_StartDate >= as.Date("2010-01-01") & Activity_StartDate <= as.Date("2024-12-31"),
-         Location_Identifier == "USGS-251241080385301")
-
-ggplot(salinity_data_visual, aes(x = Activity_StartDate, y = Result_Measure)) +
-  geom_line(color = "steelblue", size = 0.5) +
-  labs(title = "Salinity at Guage USGS-251241080385301 (ppth, 2010–2024)",
-       x = "Date",
-       y = "Salinity (ppth)") +
-  theme_minimal()
-```
-
-# 4. Methods: 
-Prior to conducting any analysis, we had to determine which gauges to extract from the list of Florida gauges in the USGS water quality and NOAA sea level data bases. We first chose one sea level rise gauge to use (based on proximity to other USGS gauges) and then selected the four nearest USGS gauges by distance in km, according to latitude and longitudes provided in the dataset. To answer our research question for this project, we conducted a spearman correlation test, time series with forecasting, and ggplot. First, we cleaned the sea level rise data by removing the metadata from the file and adding a column for gauge ID. We then cleaned the salinity data by selecting for only the necessary columns for analysis: columns denoting location, date of collection, descriptions of results, and result measurements. We also ensured both sea level and salinity data sets only included dates from 2010-2024, as this is the range of years we narrowed in on for analysis. Once this was complete, we began the analysis. We first conducted a time series in R studio highlighting trends in salinity over time. Next, we used a prophet model to show forecasted trends in salinity over the next five years (2025 - 2029). We then visualized the trends in salinity and sea level rise by employing a faceted ggplot showing both salinity at each gauge and sea level rise across the 14 years we analyzed. Finally, we employed spearman correlation tests at each gauge to test for significance in the relationships between sea level rise and freshwater salinity in Florida.  
-
-#5. Analysis 
-Cleaning sea level rise data
-```{r}
 f <- c("8723970_VacaKey.csv")
 SLR_data <- map(f, function(i) {
   readr::read_csv(i, skip = 5, show_col_types = FALSE) |> 
@@ -125,6 +85,46 @@ cleaned_salinity_data <- salinity_data %>%
   )
 ```
 
+Mapped Guages
+```{r}
+library(ggplot2)
+library(ggrepel)
+library(readr)
+library(dplyr)
+library(maps)
+library(sf)
+
+locations <- read_csv("locations.csv")
+
+states_map <- map_data("state")
+florida_map <- filter(states_map, region == "florida")
+
+data("us.cities", package = "maps")
+cities_nearby <- us.cities %>%
+  filter(country.etc == "FL" & pop > 170000)
+
+nhd_dir <- "rivers"
+shapefiles <- list.files(nhd_dir, pattern = "NHDFlowline.shp$", recursive = TRUE, full.names = TRUE)
+nhd_list <- lapply(shapefiles, st_read, quiet = TRUE)
+nhd_all <- do.call(rbind, nhd_list)
+
+locations <- ggplot() +
+  geom_sf(data = nhd_all, color = "darkblue", size = 0.03) +
+  geom_polygon(data = florida_map, aes(x = long, y = lat, group = group),
+               fill = "lightgrey", color = "white") +
+  geom_point(data = locations, aes(x = long, y = lat), color = "red", size = 1) +
+  geom_text_repel(data = locations, aes(x = long, y = lat, label = site_ID),
+                  size = 3, max.overlaps = Inf, box.padding = 0.4, point.padding = 0.3) +
+  geom_point(data = cities_nearby, aes(x = long, y = lat), color = "hotpink", size = 0.5) +
+  geom_text_repel(data = cities_nearby, aes(x = long, y = lat, label = name),
+                  size = 3, color = "hotpink", box.padding = 0.3) +
+  coord_sf() +
+  labs(title = "Site Locations in Florida", x = "Longitude", y = "Latitude") +
+  theme_minimal()
+
+print(locations)
+```
+
 Time Series Analysis
 ```{r}
 salinity_yearly_ts <- cleaned_salinity_data %>%
@@ -138,13 +138,13 @@ salinity_yearly_ts <- cleaned_salinity_data %>%
   mutate(year_date = as.Date(paste0(year, "-01-01"))) %>%
   as_tsibble(index = year_date, key = Location_Identifier)
 
-autoplot(salinity_yearly_ts, yearly_salinity) +
+timeseries <- autoplot(salinity_yearly_ts, yearly_salinity) +
   facet_wrap(~Location_Identifier, scales = "free_y") +
   labs(title = "Yearly Salinity Time Series (2010–2024)",
-       y = "Mean Salinity", x = "Year")
+       y = "Mean Salinity (ppth)", x = "Year")
 ```
 
-Forecasting:
+Forecasting
 ```{r}
 my_date <- as.Date("2024-12-31")
 
@@ -165,14 +165,16 @@ fitted_models <- modeltime_table(fit_prophet)
 forecasts <- fitted_models %>%
   modeltime_forecast(new_data = future, actual_data = combined_train_df)
 
-ggplot(forecasts, aes(x = .index, y = .value, color = .model_desc)) +
+forecasts <- ggplot(forecasts, aes(x = .index, y = .value, color = .model_desc)) +
   geom_line(size = 1) +
   labs(title = "Five Year Forecast for Average Freshwater Salinity in Florida",
-       x = "Date", y = "Predicted Salinity") +
+       x = "Date", y = "Predicted Salinity (ppth)") +
   theme_minimal()
+
+print(forecasts)
 ```
 
-Visualization:
+Visualization
 ```{r}
 salinity_yearly <- cleaned_salinity_data %>%
   filter(Result_Characteristic == "Salinity",
@@ -198,7 +200,7 @@ slr_yearly <- slr_clean %>%
 
 combined_yearly <- bind_rows(salinity_yearly, slr_yearly)
 
-ggplot(combined_yearly, aes(x = year, y = value, color = Location_Identifier)) +
+visuals <- ggplot(combined_yearly, aes(x = year, y = value, color = Location_Identifier)) +
   geom_point(size = 2) +  # scatter points
   geom_smooth(method = "loess", se = FALSE, size = 1, linetype = "solid") +  # smoothed curve
   geom_smooth(method = "lm", se = FALSE, size = 1, linetype = "dashed") +  # linear trend line
@@ -211,9 +213,11 @@ ggplot(combined_yearly, aes(x = year, y = value, color = Location_Identifier)) +
   ) +
   theme_minimal() +
   theme(legend.position = "none") 
+
+print(visuals)
 ```
 
-Spearman Correlation Test:
+Spearman Correlation Test
 ```{r}
 slr_clean <- SLR_data %>%
   filter(Year >= 2010 & Year <= 2024) %>%
@@ -231,7 +235,7 @@ salinity_filtered <- cleaned_salinity_data %>%
 
 cor_results <- salinity_filtered %>%
   split(.$Location_Identifier) %>%
-  map(~{
+  purrr::map(~{
     merged <- inner_join(.x, slr_clean, by = "date")
     test <- cor.test(merged$mean_salinity, merged$Monthly_MSL, method = "spearman")
     tibble(
@@ -245,15 +249,33 @@ cor_results <- salinity_filtered %>%
 print(cor_results)
 ```
 
-# 6. Results:
-With gauge USGS-251032080473400, salinity fluctuated over time, with there being several peaks between 2012 and 2018. There is then a downward trend from 2019 to 2024. Gauge location USGS-251115081075800 shows salinity rises throughout 2011 to 2017 where it significantly decreases in mean salinity. Gauge location USGS-251152080370900 shows a significant peak in salinity in 2015 and then begins to fluctuate between the mean of 20 ppth through 10. Gauge location USGS-251241080385301 salinity was low in 2013 then stabilized after 2016 for a period of about 4 years. Yet by 2020 the salinity significantly decreased and is now rising back to a mean of 28 as of 2024. Overall, salinity in Florida seems to fluctuate heavily over time, with two of the gauges analyzed observing a gradual increase in recent years.
-A five year salinity forecast was generated in Rstudio for Florida freshwater systems by aggregating data from all chosen gauges. Historical salinity data from 2010 to 2024 is shown in red. The model generated forecast from 2025 to 2029 is shown in blue. The actual salinity data for all gauges (red) fluctuated around 23 to 33 ppth for majority of the 14 years, hitting a low of about 18 in 2024. The forecasted salinity levels (blue) are predicted to be relatively stable over the 5 year period (around 22 ppth), indicating no extreme changes in salinity should occur within the next 5 years in Florida. 
-The results of the scatter plot visualization show there is no clear relationship between Sea Level Rise (SLR) trends and any of the salinity time series for the four gauges. The SLR gauge displays a steady upward trend. Yet the remaining salinity gauges show varied patterns and fluctuating salinity trends. The faceted scatterplot was created to visualize yearly average values for SLR and salinity across four USGS monitoring stations in Florida from 2010 to 2024. The dots represent observed annual values from the original dataset. The solid lines show the yearly observations. The dashed lines represent linear trend lines fitted to the data. Thus, as SLR continuously increases, salinity levels may increase, decrease, or remain relatively stable across time, varying with each gauge.
-According to the spearman correlation tests, none of the gauges showed a statistically significant correlation with sea level rise (all the p-values > 0.05). These results suggest there is no significant relationship between sea level rise and the selected Florida USGS water gauge salinity measurements.
+The results of the time series we conducted illustrate the fact that each USGS gauge varies greatly in salinity levels from one another across the years 2010-2024. Additionally, within each gauge there is drastic variation between years, spanning more than 25 ppth for one gauge (Figure 1). Gauge USGS-251032080473400 observed several peaks and lows between 2012 and 2018, but has been exhibiting a downward trend since 2020. Gauge location USGS-251115081075800 shows that salinity levels increased overall from 2011 to 2017, where it then continuously decreased in mean salinity. Gauge location USGS-251152080370900 showed a significant peak in salinity in 2015 and then began to fluctuate around a mean of 15 ppth through 2024. Gauge location USGS-251241080385301 hit a low in 2013 then stabilized after 2016 for a period of about 4 years. Yet, by 2020 the salinity significantly decreased and is now rising back to a mean of 28 ppth as of 2024 (Figure 1). Overall, salinity in Florida seems to fluctuate heavily over time, with two of the gauges analyzed observing a gradual increase in recent years.
+```{r}
+print(timeseries)
+```
+Figure 1. Time series of yearly mean salinity in parts per thousand for each of the four USGS gauges in Florida for the years 2010-2024. Trends over time vary for each of the different gauges. 
+
+The results of our forecasting prophet model predicted relatively stable salinity levels in our region of Southern Florida for the next five years, 2025-2029. The actual salinity values of all four gauges averaged together shows variation across years 2010-2024, with a sharp decline beginning before 2020 and continuing until 2024. The model generated forecast indicates that salinity levels are predicted to be relatively stable over the next 5 year period, maintaining a salinity level around 22 ppth (Figure 2). No extremes are predicted to occur within this time frame. 
+```{r}
+print(forecasts)
+```
+Figure 2. Forecasted model of average salinity (ppth) from all combined USGS gauges produced with a prophet model. The red line shows actual values for years 2010-2024. The blue line shows the predicted values for years 2025-2029. 
+
+The results of the scatter plot visualization indicate that there is no clear relationship between sea level rise (SLR) trends and any of the salinity trends for the four USGS gauges. The SLR gauge displays a clear, steady upward trend over time. However, the remaining salinity gauges show varied patterns and fluctuating salinity trends (Figure 3). The included trend lines (dashed lines on the visual) allow for easy visualization of the differences in trends between salinity gauges. Two of the gauges show a trend of slightly increasing salinity, one remains extremely stable, and one shows a slight decline over time. Thus, as SLR continuously increases, salinity levels may increase, decrease, or remain relatively stable across time, varying with each gauge.
+```{r}
+print(visuals)
+```
+Figure 3. Faceted scatterplot shows trends in sea level rise (meters) or salinity levels (ppth) for each SLR gauge and salinity gauge. The red plot shows sea level rise while all others show salinity. Dots represent actual data points, solid lines represent smoothed lines, and the dashed lines included are trend lines for each set of data. 
+
+Finally, the results of our Spearman’s correlation tests show p-values much greater than 0.05 for every USGS salinity gauge when compared to the sea level rise data. These results suggest that there is no significant relationship between sea level rise and the selected Florida USGS water gauge salinity measurements at the 0.05 level. Thus, we fail to reject the null hypothesis that there is no correlation between sea level rise and freshwater salinity in Florida.
 
 # 7. Discussion:
-The obtained results in this project show that, despite the constant increase in sea level registered in stations like Vaca Key between 2010 and 2024, no statistically relevant relationship between this increase and levels of salinity on freshwater monitored in Florida was shown. This lack of significant correlation, evidenced by the p values above 0.05 in all of the tests of Spearman correlation, suggests that that increase in sea level hasn’t had a uniform or direct impact on the salinity of the freshwater during the study period. 
-The observed variability in the salinity data between different stations could be influenced by multiple factors other than sea level rise. These factors may include local hydrogeological conditions, land use, precipitation trend changes, human activity like pumping of aquifers or wastewater management, as well as proximity to urbanized or industrial areas.
-Additionally, although the time series model showed fluctuations in the salinity with certain upward and downward trends between stations, the forecast made with the Prophet model indicates that the salinity levels will be maintained relatively stable in the near future. This prediction reinforces the idea that other elements could be cushioning or masking the effect of sea level rise over the quality of fresh water.
-Using a single sea level gauge and comparing it to nearby water quality stations was a practical strategy for this exploratory analysis. However, future research could benefit from a multivariate approach that incorporates other environmental and socio economic factors in order to better understand the dynamic between sea level rise and water quality. 
-Finally, even though there wasn’t a direct relation between sea level rise and salinity in this data sample, the continued monitoring of both parameters is still crucial. As climate change progresses, the cumulative effects could manifest more clearly in the long term, which highlights the importance of expanding the spatial and temporal coverage of these studies in Florida and other vulnerable coastal regions.
+The findings show that, even though sea levels have increased in a constant manner, this increase does not translate into a corresponding increase in salinity levels of freshwater in the sites analyzed in this study. This disconnect could be explained by factors such as local hydrogeology, precipitation patterns, groundwater management and land use changes which are also known to influence freshwater quality. 
+
+Another study showed that although there was a clear retreat of the interface between fresh and salt water linked to sea level rise documented in coastal aquifers [@werner2009], our results do not show a significant relationship in surface water bodies, suggesting a substantial difference in the hydrological response mechanisms between subsystems. Contrary to this, a study conducted in the estuary of the St. Marks River in Florida actually projected increases in salinity as high as 12.7 ppth under sea level rise scenarios [@xiao2014], and what was observed in Chesapeake Bay was that sea level rise explained a significant upward trend in residual salinity [@hilton2008]. These differ from our study in the south of Florida that did not identify any correlation between the variables, which could be due to localized hydrological characteristics. Additionally, the presence of flood control infrastructure and water treatment plants could be buffering or altering the direct effect of the sea levels over the freshwater sources. 
+
+Even though the time series model shows varied patterns, the prophet forecast model suggests that in the near future, the salinity levels won’t experience drastic changes. This could reveal a temporary resilience of the water system in the studied locations. Nevertheless, the complexity of environmental processes in coastal zones requires more integrated models. 
+
+There are multiple limitations to this study, including the use of a single gauge per zone, the lack of additional climate variables, and the need to extend the temporal and spatial resolution of the study. For future studies, a multivariable focus and a long term analysis would enhance the study of freshwater quality in terms of sea level rise.
+
+In conclusion, we fail to reject the null hypothesis that the increase in sea levels is not correlated to changes in freshwater salinity levels. Even though the data analyzed do not show a direct correlation between sea level increase and freshwater salinity in Florida, it highlights the urgent need to have continued monitoring. These kinds of studies are key to anticipate the possible cumulative effects of climate change and to help make informed decisions in the management of water resources in vulnerable regions. Combined with rising sea levels and saltwater intrusion, estuarine systems face multiple other stressors that require an integrated response, with policy, technological, and ecological solutions required to face them.
